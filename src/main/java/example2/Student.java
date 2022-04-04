@@ -5,6 +5,22 @@ public class Student {
     private String name;
     private int age;
 
+    public Student(int facultyNumber, String name, int age) {
+        this.facultyNumber = facultyNumber;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return facultyNumber + "," + name + "," + age;
+    }
+
     public Student() {
     }
 
