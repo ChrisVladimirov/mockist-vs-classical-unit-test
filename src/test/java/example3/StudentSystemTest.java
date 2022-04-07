@@ -8,13 +8,13 @@ import static org.junit.Assert.assertEquals;
 
 public class StudentSystemTest {
     @Test
-    public void createStudent_sampleInput_expectedResult() {
-        String input = "Pesho,18";
-        String expectedResult = "1,Pesho,18";
+    public void createStudentClassicalTest() {
+        String input = "Ivan,33";
+        String expectedOutput = "1,Ivan,33";
         StudentSystem studentSystem = new StudentSystem(new StudentParserImpl(), new FakeDatabase());
 
         String result = studentSystem.createStudent(input);
 
-        assertEquals(expectedResult, result);
+        assertEquals(expectedOutput, result);
     }
 }

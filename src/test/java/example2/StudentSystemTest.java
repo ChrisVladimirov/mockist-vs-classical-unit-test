@@ -34,12 +34,24 @@ public class StudentSystemTest {
         Student withId = new Student(1, "Pesho", 18);
 
         when(parser.parseStudent(input)).thenReturn(student);
-        when(parser.formatStudent(withId)).thenReturn(expectedResult);
         when(database.persist(student)).thenReturn(withId);
-        StudentSystem studentSystem = new StudentSystem(parser, database);
+        when(parser.formatStudent(withId)).thenReturn(expectedResult);
 
         String result = studentSystem.createStudent(input);
 
         assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void getStudentByFacultyNumberTest() {
+        int facultyNumber = 10;
+        Student student = new Student(10, "Georgi", 23);
+        String formattedStudent = "10,Georgi,23";
+        when(database.getStudentByFacultyNumber(facultyNumber)).thenReturn(student);
+        when(parser.formatStudent(student)).thenReturn(formattedStudent);
+
+        String result = studentSystem.getStudent(facultyNumber);
+
+        assertEquals("10,Georgi,23", result);
     }
 }
